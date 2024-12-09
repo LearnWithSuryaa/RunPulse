@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RunPulse</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logo.png" />
+    <!-- Font Awesome untuk ikon media sosial -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -15,6 +17,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+      /* Navbar fixed position */
       .navbar {
         position: fixed;
         top: 0;
@@ -23,15 +26,20 @@
         z-index: 1000;
         transition: top 0.3s;
       }
+
+      /* Menyembunyikan navbar saat scroll ke bawah */
       .hidden-nav {
         top: -80px;
       }
+
+      /* Tambahkan padding untuk konten agar tidak tertutup navbar */
       body {
         padding-top: 80px;
       }
     </style>
   </head>
   <body class="bg-gray-50">
+    <!-- Navbar -->
     <nav
       class="navbar bg-blue-600 shadow-md"
       id="navbar"
@@ -43,7 +51,8 @@
           >
             RunPulse
           </div>
-           <div class="lg:hidden">
+          <!-- Menu toggle button for mobile -->
+          <div class="lg:hidden">
             <button id="navbar-toggle" class="text-white focus:outline-none">
               <svg
                 id="hamburger-icon"
@@ -77,6 +86,7 @@
               </svg>
             </button>
           </div>
+          <!-- Navigation Links -->
           <div class="hidden lg:flex space-x-6">
             <a
               href="#hero"
@@ -108,6 +118,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Mobile Menu -->
       <div
         id="navbar-menu"
         class="lg:hidden bg-blue-600 text-white w-full px-6 py-4 hidden"
@@ -119,16 +131,23 @@
     </nav>
 
     <script>
-      document.getElementById("navbar-toggle")
+      // Toggle mobile menu and icon change
+      document
+        .getElementById("navbar-toggle")
         .addEventListener("click", function () {
           const menu = document.getElementById("navbar-menu");
           const hamburgerIcon = document.getElementById("hamburger-icon");
           const closeIcon = document.getElementById("close-icon");
+
+          // Toggle the menu visibility
           menu.classList.toggle("hidden");
+
+          // Toggle the icons
           hamburgerIcon.classList.toggle("hidden");
           closeIcon.classList.toggle("hidden");
         });
 
+      // Close the menu when a link is clicked
       const menuLinks = document.querySelectorAll(".menu-link");
       menuLinks.forEach((link) => {
         link.addEventListener("click", function () {
@@ -136,13 +155,15 @@
           const hamburgerIcon = document.getElementById("hamburger-icon");
           const closeIcon = document.getElementById("close-icon");
 
+          // Hide the menu and show the hamburger icon
           menu.classList.add("hidden");
           hamburgerIcon.classList.remove("hidden");
           closeIcon.classList.add("hidden");
         });
       });
     </script>
-    
+
+    <!-- Hero Section -->
     <section
       id="hero"
       class="bg-blue-700 text-white text-center py-32 h-screen flex items-center justify-center"
@@ -167,7 +188,8 @@
         >
       </div>
     </section>
-    
+
+    <!-- Main Calculator Section -->
     <section id="calculator" class="py-12 bg-blue-600">
       <div class="max-w-7xl mx-auto px-6">
         <div
@@ -235,6 +257,7 @@
             </button>
           </div>
         </div>
+
         <div
           class="bg-white shadow-md rounded-lg p-8 mt-8"
         >
@@ -244,12 +267,17 @@
           >
             MHR Anda akan ditampilkan di sini
           </p>
+
+          <!-- Donut Chart Section -->
+          <div
             class="flex justify-center mt-4"
           >
             <div class="relative w-80 h-80">
               <canvas id="myChart"></canvas>
             </div>
           </div>
+
+          <!-- Tabel Zona Heart Rate -->
           <div
             id="zoneTable"
             class="mt-6 overflow-x-auto"
@@ -271,6 +299,8 @@
               <tbody id="zoneTableBody"></tbody>
             </table>
           </div>
+
+          <!-- Zona Deskripsi -->
           <div
             id="zoneDescriptions"
             class="mt-6 text-center text-sm text-gray-600"
@@ -278,7 +308,8 @@
         </div>
       </div>
     </section>
-    
+
+    <!-- About Section -->
     <section id="about" class="bg-blue-700 text-white py-32 flex items-center">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
@@ -291,10 +322,13 @@
             disesuaikan dengan tujuan kebugaran Anda.
           </p>
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Left Content -->
           <div
             class="bg-white text-gray-900 p-6 rounded-lg shadow-2xl transform transition duration-300 hover:scale-105"
-            data-aos="fade-right">
+            data-aos="fade-right"
+          >
             <h3 class="text-2xl font-bold mb-4 text-blue-700">
               Apa Itu Zona Detak Jantung?
             </h3>
@@ -320,9 +354,12 @@
               <li><strong>Zone 5:</strong> Maximum effort (90-100% of MHR).</li>
             </ul>
           </div>
+
+          <!-- Right Content -->
           <div
             class="bg-white text-gray-900 p-6 rounded-lg shadow-2xl transform transition duration-300 hover:scale-105"
-            data-aos="fade-left">
+            data-aos="fade-left"
+          >
             <h3 class="text-2xl font-bold mb-4 text-blue-700">
               Bagaimana Cara Kerja Program Ini?
             </h3>
@@ -332,6 +369,7 @@
               berdasarkan input yang Anda berikan, memberikan wawasan yang
               disesuaikan untuk latihan yang optimal.
             </p>
+
             <div class="mt-6">
               <h4 class="text-xl font-medium mb-2 text-blue-600">
                 Manfaat Utama:
@@ -345,6 +383,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Additional Information -->
         <div class="mt-16 text-center">
           <h3 class="text-3xl font-extrabold mb-6 text-yellow-400">
             Mengapa Memantau Detak Jantung Anda?
@@ -362,46 +402,48 @@
         </div>
       </div>
     </section>
-    
-<footer class="bg-gray-900 text-white py-4">
-  <div class="text-center">
-    <p class="text-sm font-medium">
-      &copy; 2024 RunPulse | Dibuat oleh LearnWithSurya
-    </p>
-    <p class="text-xs mt-1">
-      Aplikasi ini dirancang untuk membantu Anda memahami zona detak jantung
-      yang optimal untuk latihan Anda.
-    </p>
-    <div class="flex justify-center mt-3 space-x-4">
-      <a
-        href="https://www.instagram.com/suryahipersomniaa"
-        target="_blank"
-        aria-label="Instagram"
-        class="hover:text-blue-400"
-      >
-        <i class="fab fa-instagram text-xl"></i>
-      </a>
-      <a
-        href="https://www.linkedin.com/in/muhammad-surya-putra-davindra-60b373318/"
-        target="_blank"
-        aria-label="LinkedIn"
-        class="hover:text-blue-400"
-      >
-        <i class="fab fa-linkedin text-xl"></i>
-      </a>
-      <a
-        href="https://github.com/LearnWithSuryaa"
-        target="_blank"
-        aria-label="GitHub"
-        class="hover:text-blue-400"
-      >
-        <i class="fab fa-github text-xl"></i>
-      </a>
-    </div>
-  </div>
-  </footer>
 
-    <script>      
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-5">
+      <div class="text-center">
+        <p class="text-lg font-medium">
+          &copy; 2024 RunPulse | Dibuat oleh LearnWithSurya
+        </p>
+        <p class="text-sm mt-2">
+          Aplikasi ini dirancang untuk membantu Anda memahami zona detak jantung
+          yang optimal untuk latihan Anda.
+        </p>
+        <div class="flex justify-center mt-4 space-x-6">
+          <a
+            href="https://www.instagram.com/suryahipersomniaa"
+            target="_blank"
+            aria-label="Instagram"
+            class="hover:text-blue-400"
+          >
+            <i class="fab fa-instagram text-2xl"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/muhammad-surya-putra-davindra-60b373318/"
+            target="_blank"
+            aria-label="LinkedIn"
+            class="hover:text-blue-400"
+          >
+            <i class="fab fa-linkedin text-2xl"></i>
+          </a>
+          <a
+            href="https://github.com/LearnWithSuryaa"
+            target="_blank"
+            aria-label="GitHub"
+            class="hover:text-blue-400"
+          >
+            <i class="fab fa-github text-2xl"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scroll saat tombol di klik
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -412,7 +454,7 @@
         });
       });
 
-      
+      // Navbar muncul saat scroll ke atas
       let lastScrollTop = 0;
       window.addEventListener("scroll", function () {
         let navbar = document.getElementById("navbar");
