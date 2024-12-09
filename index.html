@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RunPulse</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome untuk ikon media sosial -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <!-- Header -->
+  <header class="bg-blue-700 text-white py-6">
+    <h1 class="text-center text-3xl font-bold">Heart Rate Zone Calculator</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto p-6">
+    <!-- Input Section -->
+    <div class="bg-white shadow-md rounded-lg p-8 mb-8">
+      <h2 class="text-xl font-semibold mb-6 text-center">Masukkan Informasi Anda</h2>
+      <div class="space-y-4">
+        <div>
+          <label for="age" class="block text-lg font-medium mb-2">Usia Anda:</label>
+          <input
+            type="number"
+            id="age"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Masukkan usia Anda"
+          />
+        </div>
+        <div>
+          <label for="heartRate" class="block text-lg font-medium mb-2">Detak Jantung Anda:</label>
+          <input
+            type="number"
+            id="heartRate"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Masukkan detak jantung Anda"
+          />
+        </div>
+        <button
+          id="calculateBtn"
+          class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+        >
+          Hitung Zona
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="bg-white shadow-md rounded-lg p-8">
+      <p id="mhrOutput" class="text-center text-lg font-semibold mb-6 text-gray-700">
+        MHR Anda akan ditampilkan di sini
+      </p>
+      <div class="flex justify-center">
+        <div class="relative w-full max-w-sm h-64">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <p id="zoneOutput" class="text-center text-lg font-semibold mt-6 text-gray-700">
+        Zona Heart Rate akan ditampilkan di sini
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="text-center">
+      <p class="text-lg font-medium">&copy; 2024 RunPulse | Dibuat oleh LearnWithSurya</p>
+      <p class="text-sm mt-2">Aplikasi ini dirancang untuk membantu Anda memahami zona detak jantung yang optimal untuk latihan Anda.</p>
+      <div class="flex justify-center mt-4 space-x-6">
+        <a href="https://www.instagram.com/suryahipersomniaa" target="_blank" aria-label="Instagram" class="hover:text-blue-400">
+          <i class="fab fa-instagram text-2xl"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-surya-putra-davindra-60b373318/" target="_blank" aria-label="LinkedIn" class="hover:text-blue-400">
+          <i class="fab fa-linkedin text-2xl"></i>
+        </a>
+        <a href="https://github.com/LearnWithSuryaa" target="_blank" aria-label="GitHub" class="hover:text-blue-400">
+          <i class="fab fa-github text-2xl"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
