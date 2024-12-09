@@ -15,13 +15,6 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
-
-    <!-- AOS CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
-      rel="stylesheet"
-    />
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       /* Navbar fixed position */
@@ -50,8 +43,6 @@
     <nav
       class="navbar bg-blue-600 shadow-md"
       id="navbar"
-      data-aos="fade-down"
-      data-aos-duration="1000"
     >
       <div class="max-w-7xl mx-auto px-6 py-6">
         <div class="flex justify-between items-center">
@@ -60,7 +51,43 @@
           >
             RunPulse
           </div>
-          <div class="flex space-x-6">
+          <!-- Menu toggle button for mobile -->
+          <div class="lg:hidden">
+            <button id="navbar-toggle" class="text-white focus:outline-none">
+              <svg
+                id="hamburger-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              <svg
+                id="close-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="w-6 h-6 hidden"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <!-- Navigation Links -->
+          <div class="hidden lg:flex space-x-6">
             <a
               href="#hero"
               class="text-white hover:text-gray-200 px-4 transform transition duration-300 ease-in-out hover:scale-105 relative group"
@@ -91,7 +118,50 @@
           </div>
         </div>
       </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="navbar-menu"
+        class="lg:hidden bg-blue-600 text-white w-full px-6 py-4 hidden"
+      >
+        <a href="#hero" class="block py-2 menu-link">Home</a>
+        <a href="#calculator" class="block py-2 menu-link">Calculator</a>
+        <a href="#about" class="block py-2 menu-link">About</a>
+      </div>
     </nav>
+
+    <script>
+      // Toggle mobile menu and icon change
+      document
+        .getElementById("navbar-toggle")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("navbar-menu");
+          const hamburgerIcon = document.getElementById("hamburger-icon");
+          const closeIcon = document.getElementById("close-icon");
+
+          // Toggle the menu visibility
+          menu.classList.toggle("hidden");
+
+          // Toggle the icons
+          hamburgerIcon.classList.toggle("hidden");
+          closeIcon.classList.toggle("hidden");
+        });
+
+      // Close the menu when a link is clicked
+      const menuLinks = document.querySelectorAll(".menu-link");
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          const menu = document.getElementById("navbar-menu");
+          const hamburgerIcon = document.getElementById("hamburger-icon");
+          const closeIcon = document.getElementById("close-icon");
+
+          // Hide the menu and show the hamburger icon
+          menu.classList.add("hidden");
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        });
+      });
+    </script>
 
     <!-- Hero Section -->
     <section
@@ -120,21 +190,16 @@
     </section>
 
     <!-- Main Calculator Section -->
-    <section
-      id="calculator"
-      class="py-12 bg-blue-600"
-    >
+    <section id="calculator" class="py-12 bg-blue-600">
       <div class="max-w-7xl mx-auto px-6">
         <div
           class="bg-white p-6 rounded-lg shadow-md"
-          data-aos="zoom-in"
-          data-aos-delay="500"
         >
           <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">
             Masukkan Informasi Anda
           </h2>
           <div class="space-y-4">
-            <div data-aos="fade-right" data-aos-delay="100">
+            <div>
               <label for="age" class="block text-lg font-medium mb-2"
                 >Usia Anda:</label
               >
@@ -145,7 +210,7 @@
                 placeholder="Masukkan usia Anda"
               />
             </div>
-            <div data-aos="fade-left" data-aos-delay="200">
+            <div>
               <label for="heartRate" class="block text-lg font-medium mb-2"
                 >Detak Jantung Anda (bpm):</label
               >
@@ -156,7 +221,7 @@
                 placeholder="Masukkan detak jantung Anda"
               />
             </div>
-            <div data-aos="fade-right" data-aos-delay="300">
+            <div>
               <label
                 for="restingHeartRate"
                 class="block text-lg font-medium mb-2"
@@ -172,7 +237,7 @@
                 >Kosongkan jika Anda tidak tahu.</small
               >
             </div>
-            <div data-aos="fade-left" data-aos-delay="400">
+            <div>
               <label for="activityLevel" class="block text-lg font-medium mb-2"
                 >Level Aktivitas:</label
               >
@@ -187,8 +252,6 @@
             <button
               id="calculateBtn"
               class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
-              data-aos="fade-up"
-              data-aos-delay="500"
             >
               Hitung Zona
             </button>
@@ -197,8 +260,6 @@
 
         <div
           class="bg-white shadow-md rounded-lg p-8 mt-8"
-          data-aos="zoom-in"
-          data-aos-delay="600"
         >
           <p
             id="mhrOutput"
@@ -210,8 +271,6 @@
           <!-- Donut Chart Section -->
           <div
             class="flex justify-center mt-4"
-            data-aos="fade-up"
-            data-aos-delay="700"
           >
             <div class="relative w-80 h-80">
               <canvas id="myChart"></canvas>
@@ -222,8 +281,6 @@
           <div
             id="zoneTable"
             class="mt-6 overflow-x-auto"
-            data-aos="fade-up"
-            data-aos-delay="800"
           >
             <h3 class="text-center text-lg font-semibold mb-2 text-gray-700">
               Tabel Zona Heart Rate Anda
@@ -247,18 +304,13 @@
           <div
             id="zoneDescriptions"
             class="mt-6 text-center text-sm text-gray-600"
-            data-aos="fade-up"
-            data-aos-delay="900"
           ></div>
         </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section
-      id="about"
-      class="bg-blue-700 text-white py-32 flex items-center"
-    >
+    <section id="about" class="bg-blue-700 text-white py-32 flex items-center">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
           <h2 class="text-5xl font-extrabold text-yellow-300">
@@ -390,15 +442,7 @@
       </div>
     </footer>
 
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-      AOS.init({
-        duration: 1000, // Durasi animasi
-        easing: "ease-in-out", // Gaya easing
-        once: true, // Animasi hanya terjadi sekali
-      });
-
       // Smooth scroll saat tombol di klik
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
