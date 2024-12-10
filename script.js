@@ -33,7 +33,7 @@ function calculateMHR(age) {
 }
 
 function getDefaultRHR(activityLevel) {
-  return activityLevel === "athlete" ? 55 : 75;
+  return activityLevel === "athlete" ? 50 : 60;
 }
 
 function calculateTargetHeartRate(rhr, mhr, intensity) {
